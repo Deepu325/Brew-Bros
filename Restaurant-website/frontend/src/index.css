@@ -1,0 +1,215 @@
+/* =========================================
+   BREW BROS - Design System & Global Styles
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Kannada:wght@400;700&display=swap');
+
+:root {
+  /* 🎨 Brand Palette - Dark Luxury Coffee House */
+  --color-primary: #A6682D;
+  --color-primary-dark: #7A4A1E;
+  --color-primary-light: #C4853E;
+  --color-secondary: #E6DDD2;
+  --color-secondary-light: #AD967D;
+  --color-accent: #5D422D;
+  --color-accent-light: #7A5840;
+  --color-bg-body: #121110;
+  --color-bg-card: #1C1A18;
+  --color-bg-muted: #2E2A26;
+  --color-text-main: #E6DDD2;
+  --color-text-muted: #AD967D;
+  --color-text-light: #E6DDD2;
+
+  /* 🅰 Typography */
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-regional: 'Noto Sans Kannada', sans-serif;
+
+  /* 📏 Layout & Spacing */
+  --container-width: 1200px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+  --border-radius: 12px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+  /* 🎬 Animations */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease-out;
+  --transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-body);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.text-kannada {
+  font-family: var(--font-regional);
+}
+
+.text-accent {
+  color: var(--color-primary);
+}
+
+/* Button & Interactives */
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #121110;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(166, 104, 45, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(166, 104, 45, 0.45);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: #121110;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp var(--transition-slow) forwards;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Responsive Utilities */
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --spacing-xl: 6rem;
+    --spacing-lg: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 4rem;
+    --spacing-lg: 2.5rem;
+    --spacing-md: 1.5rem;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex !important;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  /* Grid stacker helper */
+  .stack-on-mobile {
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-md) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-sm: 1rem;
+    --spacing-md: 1.25rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}

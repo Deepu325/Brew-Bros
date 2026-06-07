@@ -1,0 +1,11 @@
+django>=5.0.0
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+dj-database-url
+python-dotenv
+gunicorn
+whitenoise
+psycopg2
+pillow
+razorpay
